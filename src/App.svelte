@@ -2,6 +2,18 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+
+  import { onMount } from 'svelte';
+  import * as d3 from 'd3';
+  import KMeansGrapher from './components/KMeansGrapher.svelte';
+
+  let data = [];
+
+  onMount(async () => {
+    data = await d3.csv('/iris.csv', d3.autoType);
+    console.log(data);
+  });
+  
 </script>
 
 <main>
