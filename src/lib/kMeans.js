@@ -1,6 +1,6 @@
 //selects k random points to be centroids
 export function initializeCentroids(data, k) {
-    const shuffled = data.sort(() => Math.random());
+    const shuffled = data.sort(() => 0.5 - Math.random());
     return shuffled.slice(0,k);
 }
 
