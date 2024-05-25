@@ -2,6 +2,8 @@
     export let data;
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
+    import { initializeCentroids, updateCentroids, assignClusters } from '../lib/kMeans';
+  import Range from './Range.svelte';
 
     const width = 928;
     const height = 550;
@@ -15,6 +17,8 @@
 
     const xVar = 'Sepal_Length';
     const yVar = 'Petal_Width';
+
+    let k = 0;
 
     function createScatter() {
         const svg = d3.select('#scatter')
@@ -49,7 +53,8 @@
             .attr("cx", function (d) { return x(d[xVar]); } )
             .attr("cy", function (d) { return y(d[yVar]); } )
             .attr("r", 5)
-            .style("fill", "#69b3a2")
+            .style("fill", "#69b3a2");
+        
     }
 
     onMount(() => {
@@ -60,12 +65,47 @@
     
 </script>
 
-
-<svg id='scatter'></svg>
+<div>
+    <div class='user-input'>
+        <div class='slider'>
+            <label for='basic-range'>Number of Centroids (k)</label>
+            <Range on:change={(e) => k = e.detail.value} />
+            </div>
+            <button class='initialize'>Initialize Centroids</button>
+    </div>
+    <svg id='scatter'></svg>
+</div>
 
 <style>
     svg {
         max-width: 100%;
         height: auto;
     }
+
+    label {
+        text-align: left;
+        margin: 8px;
+		font-size: 16px;
+		font-weight: 600;
+    }
+
+    button {
+        height: 70px;
+        margin-top: 20px;
+    }
+
+    .user-input {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .slider {
+        width: 50%;
+        margin: 30px;
+        text-align: left;
+    }
+
+
+
 </style>
