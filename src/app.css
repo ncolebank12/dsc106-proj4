@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+text {
+  fill: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -33,6 +38,12 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  text-align: left;
+}
+
+h3 {
+  text-align: left;
+  opacity: 0.7;
 }
 
 .card {
