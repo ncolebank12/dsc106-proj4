@@ -2,6 +2,7 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import iris from './lib/data/iris.json'
 
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
@@ -10,7 +11,8 @@
   let data = [];
 
   onMount(async () => {
-    data = await d3.csv('/iris.csv', d3.autoType);
+    // data = await d3.csv('../assets/iris.csv', d3.autoType);
+    data = iris;
     console.log(data);
   });
   
