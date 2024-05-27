@@ -110,6 +110,7 @@
             <button class='initialize' on:click={() => plotInitialCentroids()}>Initialize Centroids</button>
     </div>
     <svg id='scatter'></svg>
+    <p>This is a scatter plot showing the relationship between Sepal Length and Petal Length. The data points are represented by circles, and the initial centroids are represented by larger circles. Use the slider to change the number of centroids and click "Initialize Centroids" to update the plot. Using these centroids we'll be able to see groupings that might indicate a plant's species</p>
 </div>
 
 <style>

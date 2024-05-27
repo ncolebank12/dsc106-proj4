@@ -20,6 +20,16 @@
 
   <h1>Visualizing K-Means Clustering</h1>
   <h3>An Unsupervised Machine Learning Algorithm</h3>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+  <h2>What to do when you need to find unlabled groups in a dataset</h2>
+  <p>
+    K-means clustering is a popular unsupervised machine learning algorithm used to find groups in unlabeled datasets. It is commonly used for tasks such as customer segmentation, image compression, and anomaly detection.
+  </p>
+
 
   {#if data.length === 0}
   <p>Loading...</p>
