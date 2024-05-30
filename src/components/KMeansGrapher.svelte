@@ -18,7 +18,7 @@
     const xVar = 'Sepal_Length';
     const yVar = 'Petal_Width';
 
-    let k = 0;
+    let k = 3;
     let x;
     let y;
 

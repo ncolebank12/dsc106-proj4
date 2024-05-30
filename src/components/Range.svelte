@@ -7,7 +7,7 @@
     // Props
     export let min = 0;
     export let max = 10;
-    export let initialValue = 0;
+    export let initialValue = 3;
     export let id = null;
     export let value =
       typeof initialValue === "string" ? parseInt(initialValue) : initialValue;
