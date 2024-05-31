@@ -3,7 +3,7 @@
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
     import { initializeCentroids, updateCentroids, assignClusters } from '../lib/kMeans';
-  import Range from './Range.svelte';
+    import Range from './Range.svelte';
 
     const width = 950;
     const height = 550;

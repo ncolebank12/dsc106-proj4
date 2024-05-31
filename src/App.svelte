@@ -7,6 +7,7 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import KMeansGrapher from './components/KMeansGrapher.svelte';
+    import SpeciesScatter from './components/SpeciesScatter.svelte';
 
   let data = [];
 
@@ -27,21 +28,39 @@
   <br>
   <br>
  
-  <h2>What to do when you need to find unlabled groups in a dataset</h2>
+  <h2>What to do when you need to find unlabeled groups in a dataset</h2>
   <p>
     K-means clustering is a popular unsupervised machine learning algorithm used to find groups in unlabeled datasets. It is commonly used for tasks such as customer segmentation, image compression, and anomaly detection.
   </p>
+  <br>
+  <p>
+    To visualize how k-means clustering works, we will be using the Iris dataset, which consists of 3 different species of irises (Setosa, Versicolor, and Virginica). All of the plots below show the relationship between Sepal Length nad Petal Length for the 150 irises in the dataset.
+    See <a href='https://en.wikipedia.org/wiki/Iris_flower_data_set'>here</a> for more information regarding the dataset.
+  </p>
+  <br>
 
-
+  <h2>Step 1: Initializing Centroids</h2>
+  <p>The first step of the k-means clustering algorithm involves choosing <i>k</i> centroids. There are a few ways to initalize the centroids. The most common one, which we use here, is picking <i>k</i> points randomly to be the initial centroids.edr]</p>
   {#if data.length === 0}
   <p>Loading...</p>
   {:else}
     <KMeansGrapher {data} />
   {/if}
 
+  <h2>
+    How does k-means clustering compare to the actual labels?
+  </h2>
   <p>
-    #TODO: graph of actual labeled data for comparison (using the "Species" column)
+    Lets look at the actual labels for species:
   </p>
+
+
+
+  {#if data.length === 0}
+  <p>Loading...</p>
+  {:else}
+    <SpeciesScatter {data} />
+  {/if}
 
   <p class="read-the-docs">
     #TODO: (optional) box plot of the different clusters pedal lengths
