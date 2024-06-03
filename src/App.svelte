@@ -4,10 +4,13 @@
   import Counter from './lib/Counter.svelte'
   import iris from './lib/data/iris.json'
 
+
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import KMeansGrapher from './components/KMeansGrapher.svelte';
     import SpeciesScatter from './components/SpeciesScatter.svelte';
+  import Banner from './components/Banner.svelte';
+
 
   let data = [];
 
@@ -20,13 +23,14 @@
 </script>
 
 <main>
+  <Banner />
 
-  <h1>Visualizing K-Means Clustering</h1>
+  <!-- <h1>Visualizing K-Means Clustering</h1>
   <h3>An Unsupervised Machine Learning Algorithm</h3>
   <br>
   <br>
   <br>
-  <br>
+  <br> -->
  
   <h2>What to do when you need to find unlabeled groups in a dataset</h2>
   <p>
