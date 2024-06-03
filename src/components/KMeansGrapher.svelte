@@ -2,8 +2,9 @@
     export let data;
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
-    import { initializeCentroids, updateCentroids, assignClusters } from '../lib/kMeans';
+    import { initializeCentroids, updateCentroids, assignClusters , runKMeans} from '../lib/kMeans';
     import Range from './Range.svelte';
+    import { select, scaleOrdinal, schemeCategory10 } from 'd3';
 
     const width = 950;
     const height = 550;
@@ -22,12 +23,27 @@
     let x;
     let y;
 
+    let iterations = [];
+    let currentIteration = 0;
+    let maxIteration = 0;
+    let colorScale;
+
+    function initializeAndRun() {
+        iterations = runKMeans(data, k, xVar, yVar);
+        maxIteration = iterations.length - 1;
+        currentIteration = 0;
+        colorScale = scaleOrdinal(schemeCategory10).domain([...Array(k).keys()]);
+        updatePlot();
+        console.log(maxIteration);
+    }
+
     function createScatter() {
         const svg = d3.select('#scatter')
             .attr('width', width)
             .attr('height', height);
-        console.log(svg);
+        // console.log(svg);
         svg.selectAll('*').remove(); // Clear previous content
+        const currentData = iterations[currentIteration]['data'];
         x = d3.scaleLinear()
             .domain(d3.extent(data, (d) => d[xVar]))
             .range([0, innerWidth]);
@@ -50,13 +66,13 @@
         svg.append('g')
             .attr('transform', `translate(${marginLeft},0)`)
             .selectAll("dot")
-            .data(data)
+            .data(currentData)
             .enter()
             .append("circle")
             .attr("cx", function (d) { return x(d[xVar]); } )
             .attr("cy", function (d) { return y(d[yVar]); } )
             .attr("r", 5)
-            .style("fill", "#69b3a2");
+            .style("fill", d => colorScale(d.Cluster));
 
         //axis labels
         svg.append("text")
@@ -74,12 +90,17 @@
         
     }
 
+    function updatePlot() {
+        createScatter();
+        plotInitialCentroids();
+    }
+
     function plotInitialCentroids() {
         const svg = d3.select('#scatter')
         //TODO: clear previously created centroids
         svg.selectAll('#centroids').remove();
 
-        const centroids = initializeCentroids(data, k);
+        const centroids = iterations[currentIteration]['centroids'];
         svg.append('g')
             .attr('transform', `translate(${marginLeft},0)`)
             .attr('id', 'centroids')
@@ -90,14 +111,17 @@
             .attr("cx", function (c) { return x(c[xVar]); } )
             .attr("cy", function (c) { return y(c[yVar]); } )
             .attr("r", 10)
-            .style("fill", "#b3697a");
+            .style("fill", (d, i) => colorScale(i));
+    }
+
+    function onIterationChange(event) {
+        currentIteration = +event.target.value;
+        updatePlot();
     }
 
     onMount(() => {
         createScatter();
     })
-
-
     
 </script>
 
@@ -106,11 +130,17 @@
         <div class='slider'>
             <label for='basic-range'>Number of Centroids ({k})</label>
             <Range on:change={(e) => k = e.detail.value} />
-            </div>
-            <button class='initialize' on:click={() => plotInitialCentroids()}>Initialize Centroids</button>
+        </div>
+        <button class='initialize' on:click={initializeAndRun}>Initialize and Run</button>
     </div>
     <svg id='scatter'></svg>
     <p>This is a scatter plot showing the relationship between Sepal Length and Petal Length. The data points are represented by circles, and the initial centroids are represented by larger circles. Use the slider to change the number of centroids and click "Initialize Centroids" to update the plot. Using these centroids we'll be able to see groupings that might indicate a plant's species</p>
+    {#if maxIteration > 0}
+        <div class="slider-container">
+            <input class="iteration-slider" type="range" min="0" max={maxIteration} bind:value={currentIteration} on:input={onIterationChange} />
+            <div class="iteration-label">Iteration: {currentIteration}</div>
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -142,7 +172,4 @@
         margin: 30px;
         text-align: left;
     }
-
-
-
 </style>
