@@ -134,7 +134,7 @@
         <button class='initialize' on:click={initializeAndRun}>Initialize and Run</button>
     </div>
     <svg id='scatter'></svg>
-    <h2>Step 2: Reaign Centroids and Regroup Data Points</h2>
+    <h2>Step 2: Reassign Centroids and Regroup Data Points</h2>
     <p>Now, the centroids are reassigned to the graphical middle of their cluster. Since the Centroid has moved, each data point is categorized into a new cluster. Repeat this process by moving the slider until there is no change in centroids.</p>
     {#if maxIteration > 0}
         <div class="slider-container">
