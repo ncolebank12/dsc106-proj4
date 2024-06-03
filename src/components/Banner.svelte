@@ -14,7 +14,7 @@
     height: 200px;
     text-align: center;
     /*background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);*/
-    background-image: url('dsc106-proj4/public/TestBackground.png');
+    background-image: url('../assets/TestBackground.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
