@@ -135,7 +135,7 @@
     </div>
     <svg id='scatter'></svg>
     <h2>Step 2: Reassign Centroids and Regroup Data Points</h2>
-    <p>Now, the centroids are reassigned to the graphical middle of their cluster. Since the Centroid has moved, each data point is categorized into a new cluster. Repeat this process by moving the slider until there is no change in centroids.</p>
+    <p>Now, the centroids are reassigned to the graphical middle of their cluster. Since the centroid has moved, each data point is categorized into a new cluster. Repeat this process by moving the slider until there is no change in centroids.</p>
     {#if maxIteration > 0}
         <div class="slider-container">
             <input class="iteration-slider" type="range" min="0" max={maxIteration} bind:value={currentIteration} on:input={onIterationChange} />
