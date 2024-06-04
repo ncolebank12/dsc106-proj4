@@ -14,6 +14,7 @@
     import Setosa from './assets/Setosa.jpg';
     import Versicolor from './assets/Versicolor.jpg';
     import Virginica from './assets/Virginica.jpg';
+    import ClusteredCorrectly from './components/ClusteredCorrectly.svelte';
 
 
   let data = [];
@@ -87,7 +88,7 @@
   <h2>Step 1: Initializing Centroids</h2>
   <p>The first step of the k-means clustering algorithm involves choosing <i>k</i> centroids. There are a few ways to initalize the centroids. The most common one, which we use here, is picking <i>k</i> points randomly to be the initial centroids.edr]</p>
   <p>After the centroids are placed, each data point in the scatterplot is assigned to a cluster corresponding to the nearest centroid, which can be seen by the visualization below.</p>
-
+  
   {#if data.length === 0}
   <p>Loading...</p>
   {:else}
@@ -100,6 +101,7 @@
   <p>
     Lets look at the actual labels for species:
   </p>
+  
 
 
 
@@ -109,6 +111,12 @@
     <SpeciesScatter {data} />
   {/if}
 
+
+  {#if data.length === 0}
+  <p>Loading...</p>
+  {:else}
+    <ClusteredCorrectly {data}/>
+  {/if}
 
 
   <p class="read-the-docs">
