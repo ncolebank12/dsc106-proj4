@@ -52,16 +52,16 @@
       See <a href='https://en.wikipedia.org/wiki/Iris_flower_data_set'>here</a> for more information regarding the dataset.
     </p>
     <div style="display: flex; align-items: center;">
-      <img src={Setosa} alt="Setosa" style="width: 265px; height: auto; margin-right: 200px; opacity: 0; animation: fade-in-slow 3s forwards; border: 1px solid black;"/>
+      <img src={Setosa} alt="Setosa" style="width: 265px; height: auto; margin-right: 200px; opacity: 0; animation: fade-in-slow 1s forwards; border: 1px solid black;"/>
       
-      <img src={Versicolor} alt="Versicolor" style="width: 170px; height: auto; margin-right: 200px; opacity: 0; animation: fade-in-slow 4s forwards; border: 1px solid black;"/>
+      <img src={Versicolor} alt="Versicolor" style="width: 170px; height: auto; margin-right: 200px; opacity: 0; animation: fade-in-slow 1s forwards; border: 1px solid black;"/>
       
-      <img src={Virginica} alt="Virginica" style="width: 230px; height: auto; margin-right: 100px; opacity: 0; animation: fade-in-slow 5s forwards; border: 1px solid black;"/>
+      <img src={Virginica} alt="Virginica" style="width: 230px; height: auto; margin-right: 100px; opacity: 0; animation: fade-in-slow 1s forwards; border: 1px solid black;"/>
     </div>
     <div style="display: flex; align-items: center;">
-      <p style="opacity: 0; animation: fade-in-slow 3s forwards;margin-right: 413px">Setosa</p>
-      <p style="opacity: 0; animation: fade-in-slow 4s forwards;margin-right: 300px">Versicolor</p>
-      <p style="opacity: 0; animation: fade-in-slow 5s forwards;margin-right: 600px">Virginica</p>
+      <p style="opacity: 0; animation: fade-in-slow 1s forwards;margin-right: 413px">Setosa</p>
+      <p style="opacity: 0; animation: fade-in-slow 1s forwards;margin-right: 300px">Versicolor</p>
+      <p style="opacity: 0; animation: fade-in-slow 1s forwards;margin-right: 600px">Virginica</p>
       
     </div>
     <div style="display: flex; align-items: center;">
@@ -79,7 +79,7 @@
     }
     
     .fade-in-slow {
-      animation: fade-in-slow 5s forwards;
+      animation: fade-in-slow 1s forwards;
     }
     </style>
   <p>These three species look very similar, and even with an unlabeled dataset, it would be hard to classify them by species. However, k-means clustering can help with that!</p>
@@ -119,9 +119,9 @@
   {/if}
   
   
-  <p class="read-the-docs">
+  <!-- <p class="read-the-docs">
     #TODO: (optional) box plot of the different clusters pedal lengths
-  </p>
+  </p> -->
 
 </main>
 
